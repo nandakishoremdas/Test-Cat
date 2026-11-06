@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Cat Registration</title>
+    <style>
+        body { font-family: system-ui, sans-serif; max-width: 900px; margin: 2rem auto; padding: 0 1rem; color: #222; }
+        h1 { margin-bottom: .25rem; }
+        form { display: grid; grid-template-columns: 1fr 1fr; gap: .75rem 1rem; padding: 1rem; border: 1px solid #ddd; border-radius: 8px; }
+        label { display: flex; flex-direction: column; font-size: .9rem; gap: .25rem; }
+        input, select { padding: .5rem; border: 1px solid #bbb; border-radius: 4px; font-size: 1rem; }
+        button { grid-column: 1 / -1; padding: .6rem; font-size: 1rem; background: #4a6cf7; color: #fff; border: 0; border-radius: 4px; cursor: pointer; }
+        #message { grid-column: 1 / -1; margin: 0; }
+        .ok { color: #1a7f37; } .err { color: #c62828; }
+        table { width: 100%; border-collapse: collapse; margin-top: 1rem; font-size: .9rem; }
+        th, td { text-align: left; padding: .5rem; border-bottom: 1px solid #eee; }
+        th { background: #f6f6f6; }
+        @media (max-width: 600px) { form { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+    <h1>🐱 Cat Registration</h1>
+    <p>Register a cat. Data is saved to <code>cat.family</code>.</p>
+
+    <form id="cat-form">
+        <label>Cat name *<input name="name" required maxlength="100"></label>
+        <label>Breed<input name="breed" maxlength="100"></label>
+        <label>Age (years)<input name="age" type="number" min="0"></label>
+        <label>Gender
+            <select name="gender">
+                <option value="">—</option>
+                <option>Male</option>
+                <option>Female</option>
+            </select>
+        </label>
+        <label>Color<input name="color" maxlength="50"></label>
+        <label>Owner name *<input name="owner_name" required maxlength="100"></label>
+        <label>Owner phone<input name="owner_phone" maxlength="20"></label>
+        <p id="message"></p>
+        <button type="submit">Register</button>
+    </form>
+
+    <h2>Registered cats</h2>
+    <table>
+        <thead>
+            <tr><th>#</th><th>Name</th><th>Breed</th><th>Age</th><th>Gender</th><th>Color</th><th>Owner</th><th>Phone</th><th>Registered</th></tr>
+        </thead>
+        <tbody id="cat-rows"></tbody>
+    </table>
+
+    <script src="app.js"></script>
+</body>
+</html>
